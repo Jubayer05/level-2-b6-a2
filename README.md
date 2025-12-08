@@ -2,6 +2,17 @@
 
 **Live URL:** https://vehicle-rental-system-rosy.vercel.app/
 
+## Admin Credentials
+
+For testing purposes, use the following admin account:
+
+```json
+{
+  "email": "jubayer.admin@gmail.com",
+  "password": "123456"
+}
+```
+
 A professional vehicle rental platform with comprehensive booking management, vehicle inventory control, and secure user authentication. Built with TypeScript, Express.js, and PostgreSQL for scalability and type safety.
 
 ## Features
