@@ -226,16 +226,33 @@ const updateVehicle = async (id: number, payload: Partial<Vehicle>) => {
 };
 
 const deleteVehicle = async (id: number) => {
+  // Check if vehicle has any active bookings
+  const activeBookings = await pool.query(
+    "SELECT id FROM bookings WHERE vehicle_id = $1 AND status = 'active'",
+    [id]
+  );
+
+  if (activeBookings.rows.length > 0) {
+    return {
+      success: false,
+      errors:
+        "Cannot delete vehicle with active bookings. Please complete or cancel all bookings first.",
+    };
+  }
+
   const result = await pool.query(`DELETE FROM vehicles WHERE id = $1`, [id]);
+
   if (result.rowCount === 0) {
     return {
       success: false,
       errors: "Vehicle not found",
     };
   }
+
   return {
     success: true,
     data: result.rowCount,
+    message: "Vehicle deleted successfully",
   };
 };
 
