@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes with base URL
 app.use(`${BASE_URL}/users`, userRoutes);
 app.use(`${BASE_URL}/auth`, authRoute);
-app.use(`${BASE_URL}/vehicle`, vehicleRoutes);
+app.use(`${BASE_URL}/vehicles`, vehicleRoutes);
 app.use(`${BASE_URL}/bookings`, bookingRoutes);
 
 // Health check route (usually outside base URL)
